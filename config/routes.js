@@ -29,6 +29,7 @@ module.exports.routes = {
   'POST /v1/posts': { action: 'post/create' },
   'GET /v1/posts': { action: 'post/find' },
   'GET /v1/posts/:id': { action: 'post/find-one' },
+  'PUT /v1/posts/:id': { action: 'post/update-one' }
 
 
   /***************************************************************************
