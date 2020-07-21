@@ -1,7 +1,7 @@
 module.exports = async function(req, res, next) {
 
     if(!req.headers || !req.headers.authorization) {
-        return res.badRequest({err: 'Authorization header is missing'});
+        return res.forbidden({err: 'Authorization header is missing'});
     }
 
     const token = req.headers.authorization;
@@ -16,5 +16,4 @@ module.exports = async function(req, res, next) {
 
     req.user = user.id;
     next();
-
 };

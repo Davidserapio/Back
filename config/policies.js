@@ -19,8 +19,8 @@ module.exports.policies = {
 
   // '*': true,
 
-  // PostController: {
-  //   '*': 'isLoggedIn'
-  // },
-
+  PostController: {
+    'create': 'isLoggedIn',
+    'update-one': 'isLoggedIn'
+  },
 };
