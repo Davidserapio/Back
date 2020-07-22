@@ -73,6 +73,7 @@ module.exports = {
 
     const accessToken = await sails.helpers.jwtSign(user);
     user.token = accessToken;
+    user.expiresIn = 60 * 60 * 24;
     delete user.password;
 
     return exits.success(user);
