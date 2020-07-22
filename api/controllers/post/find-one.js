@@ -25,22 +25,26 @@ module.exports = {
       statusCode: 200
     },
     notFound: {
-      description: 'There was an error in the server.',
+      description: 'Post not found',
       statusCode: 404
-    }
+    }   
 
   },
 
 
   fn: async function (inputs, exits) {
 
-    await Post.findOne({id: inputs.id})
-      .then(foundPost => {
-        return exits.success(foundPost);
-      })
-      .catch(err => {
-        return exits.notFound(err);
-      });
+    const createdPost = await Post.findOne({id: inputs.id});
+
+      if(!createdPost) {
+        let error = {
+          code: 'E_RESOURCE_NOT_FOUND',
+          message: 'Post not found'
+        };
+        return exits.notFound(error);
+      }
+
+      return exits.success(createdPost);
 
   }
 

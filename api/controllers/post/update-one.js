@@ -43,10 +43,11 @@ module.exports = {
         id: inputs.id
       })
       .set(inputs.post)
-      .then(() => {
+      .then(updatedPost => {
         let payload = {
           code: 'Ok',
-          message: 'Post updated successfully.'
+          message: 'Post updated successfully.',
+          post: updatedPost
         };
         return exits.success(payload);
       })
